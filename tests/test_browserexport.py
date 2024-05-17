@@ -5,9 +5,9 @@ import sqlite3
 
 import pytest
 
-from browserexport.common import expand_path
-from browserexport.parse import read_visits
-from browserexport.merge import read_and_merge
+from web-browser-export.common import expand_path
+from web-browser-export.parse import read_visits
+from web-browser-export.merge import read_and_merge
 
 
 def test_using_conn(firefox: Path) -> None:
@@ -115,7 +115,7 @@ def test_read_vivaldi(vivaldi: Path) -> None:
     assert v.metadata is not None
     assert (
         v.metadata.title
-        == "GitHub - seanbreckenridge/browserexport: backup and parse browser history databases"
+        == "GitHub - seanbreckenridge/web-browser-export: backup and parse browser history databases"
     )
     expected = datetime(2021, 4, 19, 2, 26, 8, 29825, tzinfo=timezone.utc)
     assert v.dt == expected

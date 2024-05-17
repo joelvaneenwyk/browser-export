@@ -1,6 +1,6 @@
 [project]
-name = "browserexport"
-version = "0.4.2"
+name = "web-browser-export"
+version = "0.4.3"
 description = "save and merge browser history and metadata from different browsers"
 authors = [{name = "Sean Breckenridge", email = "seanbrecke@gmail.com"}]
 license = {text = "MIT"}
@@ -29,7 +29,7 @@ file = "README.md"
 content-type = "text/markdown"
 
 [project.urls]
-Homepage = "https://github.com/seanbreckenridge/browserexport"
+Homepage = "https://github.com/joelvaneenwyk/browser-export"
 
 [project.optional-dependencies]
 testing = [
@@ -39,7 +39,7 @@ testing = [
 ]
 
 [project.scripts]
-browserexport = "browserexport.__main__:cli"
+web-browser-export = "web-browser-export.__main__:cli"
 
 [build-system]
 requires = ["setuptools>=61.2"]
@@ -52,13 +52,13 @@ license-files = ["LICENSE"]
 [tool.setuptools.packages.find]
 exclude = ["tests"]
 include = [
-    "browserexport",
-    "browserexport.*",
+    "web-browser-export",
+    "web-browser-export.*",
 ]
 namespaces = true
 
 [tool.setuptools.package-data]
-browserexport = ["py.typed"]
+web-browser-export = ["py.typed"]
 
 [tool.flake8]
 ignore = "E501,E402,W503,E266,E203"

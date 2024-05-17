@@ -1,5 +1,5 @@
-from browserexport.model import test_make_metadata
-from browserexport.parse import _detect_extensions
+from web-browser-export.model import test_make_metadata
+from web-browser-export.parse import _detect_extensions
 
 
 def test_detect_extensions() -> None:

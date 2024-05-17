@@ -19,10 +19,10 @@ CONTEXT_SETTINGS = {
 }
 
 
-# target for python3 -m browserexport and console_script using click
+# target for python3 -m web-browser-export and console_script using click
 @click.group(
     context_settings=CONTEXT_SETTINGS,
-    epilog="For more info, see https://github.com/seanbreckenridge/browserexport",
+    epilog="For more info, see https://github.com/joelvaneenwyk/browser-export",
 )
 @click.option("--debug", is_flag=True, default=False, help="Increase log verbosity")
 def cli(debug: bool) -> None:
@@ -66,7 +66,7 @@ def _wrap_browserexport_cli_errors() -> Iterator[None]:
     except BrowserexportError as e:
         logger.debug(e, exc_info=True)
         click.echo(
-            f"{click.style('Error:', 'red')} {e}, run as 'browserexport --debug' for more info"
+            f"{click.style('Error:', 'red')} {e}, run as 'web-browser-export --debug' for more info"
         )
         exit(1)
 
@@ -103,7 +103,7 @@ LIST_BROWSERS = "LIST_BROWSERS" in os.environ
 
 @cli.command(
     epilog=(
-        "For a list of all browsers, run 'LIST_BROWSERS=1 browserexport save --help'"
+        "For a list of all browsers, run 'LIST_BROWSERS=1 web-browser-export save --help'"
         if not LIST_BROWSERS
         else None
     ),
@@ -194,7 +194,7 @@ def _handle_merge(dbs: List[str], *, json: bool, stream: bool) -> None:
                 visits.append(read_visits(_read_buf_as_sqlite_db(sys.stdin.buffer)))
                 continue
             # this is a command substitution, write it to a temp database so we can query against it
-            # e.g. `browserexport merge <(browserexport save -b chrome -t -)`
+            # e.g. `web-browser-export merge <(web-browser-export save -b chrome -t -)`
             if os.path.islink(db) and os.readlink(db).startswith("pipe:"):
                 logger.debug(f"Reading from proc file {db} into sqlite database")
                 with open(db, "rb") as fp:
@@ -275,7 +275,7 @@ def merge(sqlite_db: Sequence[str], json: bool, stream: bool) -> None:
 
     \b
     Provide multiple sqlite databases as positional arguments, e.g.:
-    browserexport merge ~/data/firefox/*.sqlite
+    web-browser-export merge ~/data/firefox/*.sqlite
 
     Drops you into a REPL to access the data
 
@@ -286,4 +286,4 @@ def merge(sqlite_db: Sequence[str], json: bool, stream: bool) -> None:
 
 
 if __name__ == "__main__":
-    cli(prog_name="browserexport")
+    cli(prog_name="web-browser-export")

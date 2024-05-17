@@ -25,10 +25,10 @@ jobs:
           pip install '.[testing]'
       - name: Run mypy
         run: |
-          mypy ./browserexport
+          mypy ./web-browser-export
       - name: Run pytest
         run: |
           pytest
       - name: Run flake8
         run: |
-          flake8 ./browserexport
+          flake8 ./web-browser-export

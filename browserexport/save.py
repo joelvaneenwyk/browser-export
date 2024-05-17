@@ -36,7 +36,7 @@ def _print_sqlite_db_to_stdout(pth: Path) -> None:
     # make sure the user is piping this to something else, otherwise dont print
     if click.get_text_stream("stdout").isatty() and not force:
         logger.error(
-            "stdout is a TTY, not printing database to stdout. Pipe to something else (e.g. browserexport save ... > db.sqlite, browserexport save ... | gzip --best > db.sqlite.gz) or set BROWSEREXPORT_FORCE=1 to print to stdout"
+            "stdout is a TTY, not printing database to stdout. Pipe to something else (e.g. web-browser-export save ... > db.sqlite, web-browser-export save ... | gzip --best > db.sqlite.gz) or set BROWSEREXPORT_FORCE=1 to print to stdout"
         )
         return
 
