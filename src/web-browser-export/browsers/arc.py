@@ -1,10 +1,10 @@
-from web-browser-export.browsers.common import (
+from web_browser_export.browsers.common import (
     handle_path,
     Paths,
 )
 
 
-from web-browser-export.browsers.chromium import Chromium
+from web_browser_export.browsers.chromium import Chromium
 
 
 class Arc(Chromium):
