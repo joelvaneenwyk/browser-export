@@ -1,20 +1,21 @@
 # web-browser-export
 
-[![PyPi version](https://img.shields.io/pypi/v/web-browser-export.svg)](https://pypi.python.org/pypi/web-browser-export) [![Python 3.8|3.9|3.10|3.11|3.12](https://img.shields.io/pypi/pyversions/web-browser-export.svg)](https://pypi.python.org/pypi/web-browser-export) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![PyPi version](https://img.shields.io/pypi/v/web-browser-export.svg)](https://pypi.python.org/pypi/web-browser-export) [![Python 3.10|3.11|3.12](https://img.shields.io/pypi/pyversions/web-browser-export.svg)](https://pypi.python.org/pypi/web-browser-export) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-- [Supported Browsers](#supported-browsers)
-- [Install](#install)
-- [Usage](#usage)
-  - [`save`](#save)
-  - [`inspect`/`merge`](#inspectmerge)
-- [Serializing to JSON](#json)
-- [Shell Completion](#shell-completion)
-- [Usage with HPI](#hpi)
-- [Library Usage](#library-usage)
-- [Comparisons with promnesia](#comparisons-with-promnesia)
-- [Contributing](#contributing)
-  - [Development](#development)
-  - [Testing](#testing)
+- [web-browser-export](#web-browser-export)
+  - [Supported Browsers](#supported-browsers)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [`save`](#save)
+    - [`inspect`/`merge`](#inspectmerge)
+    - [JSON](#json)
+  - [Shell Completion](#shell-completion)
+  - [HPI](#hpi)
+  - [Library Usage](#library-usage)
+      - [Comparisons with Promnesia](#comparisons-with-promnesia)
+  - [Contributing](#contributing)
+    - [Development](#development)
+    - [Testing](#testing)
 
 This:
 
