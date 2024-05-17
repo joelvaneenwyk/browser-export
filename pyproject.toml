@@ -29,13 +29,6 @@ content-type = "text/markdown"
 [project.urls]
 Homepage = "https://github.com/joelvaneenwyk/browser-export"
 
-[project.optional-dependencies]
-testing = [
-    "flake8",
-    "mypy",
-    "pytest",
-]
-
 [project.scripts]
 web_browser_export = "web_browser_export.__main__:cli"
 
@@ -45,7 +38,10 @@ build-backend = "setuptools.build_meta"
 
 [tool]
 rye = { dev-dependencies = [
-    "pytest>=8.2.0",
+    "flake8",
+    "mypy",
+    "pytest",
+    "pytest>=8"
 ] }
 
 [tool.setuptools]
@@ -83,6 +79,10 @@ warn_return_any = true
 warn_unreachable = true
 
 [tool.pytest.ini_options]
-addopts = """
---verbose
-tests"""
+pythonpath = "src/"
+minversion = "8.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]

@@ -1,0 +1,19 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.analysis.inlayHints.callArgumentNames": "partial",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.terminal.focusAfterLaunch": true,
+    "python.analysis.autoImportCompletions": false,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.completeFunctionParens": false,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.languageServer": "Pylance",
+    "python.missingPackage.severity": "Warning"
+}

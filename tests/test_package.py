@@ -1,4 +1,3 @@
-from web_browser_export.model import test_make_metadata
 from web_browser_export.parse import _detect_extensions
 
 
