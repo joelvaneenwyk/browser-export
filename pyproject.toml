@@ -1,0 +1,85 @@
+[project]
+name = "browserexport"
+version = "0.4.2"
+description = "save and merge browser history and metadata from different browsers"
+authors = [{name = "Sean Breckenridge", email = "seanbrecke@gmail.com"}]
+license = {text = "MIT"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["backup", "brave", "chrome", "chromium", "database", "export", "firefox", "google-chrome", "history", "palemoon", "safari", "vivaldi", "waterfox"]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.1",
+    "kompress>=0.1.20231016",
+    "logzero",
+    "sqlite-backup>=0.1.7",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/seanbreckenridge/browserexport"
+
+[project.optional-dependencies]
+testing = [
+    "flake8",
+    "mypy",
+    "pytest",
+]
+
+[project.scripts]
+browserexport = "browserexport.__main__:cli"
+
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages.find]
+exclude = ["tests"]
+include = [
+    "browserexport",
+    "browserexport.*",
+]
+namespaces = true
+
+[tool.setuptools.package-data]
+browserexport = ["py.typed"]
+
+[tool.flake8]
+ignore = "E501,E402,W503,E266,E203"
+
+[tool.mypy]
+pretty = true
+show_error_context = true
+show_error_codes = true
+check_untyped_defs = true
+namespace_packages = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+addopts = """
+--verbose
+tests"""
