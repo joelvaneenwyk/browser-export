@@ -11,6 +11,9 @@
 click==8.1.7
     # via sqlite-backup
     # via web-browser-export
+colorama==0.4.6
+    # via click
+    # via logzero
 kompress==0.1.20231016
     # via web-browser-export
 logzero==1.7.0

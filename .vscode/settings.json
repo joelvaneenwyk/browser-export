@@ -1,4 +1,7 @@
 {
+    "files.associations": {
+        "*.lock": "pip-requirements"
+    },
     "python.testing.pytestArgs": [
         "tests"
     ],

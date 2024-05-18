@@ -33,8 +33,8 @@ Homepage = "https://github.com/joelvaneenwyk/browser-export"
 web_browser_export = "web_browser_export.__main__:cli"
 
 [build-system]
-requires = ["setuptools>=61.2"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool]
 rye = { dev-dependencies = [
@@ -43,6 +43,23 @@ rye = { dev-dependencies = [
     "pytest",
     "pytest>=8"
 ] }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/web-browser-export"]
+sources = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  ".vscode/",
+  "tests/",
+]
+exclude = [
+  ".ruff_cache/",
+  "pkg/_compat.py",
+]
+
+[tool.hatch.build.targets.wheel.force-include]
+"LICENSE" = "LICENSE"
 
 [tool.setuptools]
 include-package-data = true
@@ -80,9 +97,8 @@ warn_unreachable = true
 
 [tool.pytest.ini_options]
 pythonpath = "src/"
-minversion = "8.0"
+minversion = "7.0"
 addopts = "-ra -q"
 testpaths = [
-    "tests",
-    "integration",
+    "tests"
 ]
