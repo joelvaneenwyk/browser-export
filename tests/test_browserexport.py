@@ -115,7 +115,7 @@ def test_read_vivaldi(vivaldi: Path) -> None:
     assert v.metadata is not None
     assert (
         v.metadata.title
-        == "GitHub - seanbreckenridge/web_browser_export: backup and parse browser history databases"
+        == "GitHub - seanbreckenridge/browserexport: backup and parse browser history databases"
     )
     expected = datetime(2021, 4, 19, 2, 26, 8, 29825, tzinfo=timezone.utc)
     assert v.dt == expected
