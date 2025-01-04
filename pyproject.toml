@@ -50,11 +50,14 @@ web_browser_export = "web_browser_export.__main__:cli"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool]
-rye = { dev-dependencies = ["flake8", "mypy", "pytest", "pytest>=8"] }
+[tool.uv]
+dev-dependencies = ["flake8", "mypy", "pytest", "pytest>=8"]
+
+[tool.uv.pip]
+universal = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/web-browser-export"]
+packages = ["src/web_browser_export"]
 sources = ["src"]
 
 [tool.hatch.build.targets.sdist]
