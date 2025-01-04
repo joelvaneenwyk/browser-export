@@ -1,0 +1,11 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+    - name: browser-export
+      path: ./.github/config/browser-export.dict
+      addWords: true
+dictionaries:
+    - browser-export
+words: []
+ignoreWords: []
+import: []
