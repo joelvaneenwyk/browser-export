@@ -15,20 +15,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install '.[testing]'
+          version: "latest"
       - name: Run mypy
         run: |
-          mypy ./web-browser-export
+          uv run mypy ./src
       - name: Run pytest
         run: |
-          pytest
-      - name: Run flake8
+          uv run pytest
+      - name: Run ruff
         run: |
-          flake8 ./web-browser-export
+          uv run ruff check
