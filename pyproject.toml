@@ -110,13 +110,10 @@ warn_unreachable = true
 [tool.pytest.ini_options]
 pythonpath = "src/"
 minversion = "7.0"
-addopts = "-ra -q --ignore=.venv"
+addopts = "-ra -q --ignore=.venv --ignore=.pytest_cache"
 testpaths = ["tests"]
-norecursedirs = [
-    ".venv/*",
-    ".ruff_cache/*",
-    ".vscode/*",
-    ".git/*",
-    ".mypy_cache/*",
-    ".pytest_cache/*",
+
+[tool.pylint.main]
+ignore = [
+    ".venv"
 ]
