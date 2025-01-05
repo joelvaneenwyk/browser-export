@@ -60,7 +60,7 @@ This can probably extract visits from other Firefox/Chromium-based browsers, but
 
 `python3 -m pip install --user web-browser-export`
 
-Requires `python3.7+`
+Requires `python3.9+`
 
 ## Usage
 
@@ -111,7 +111,7 @@ The `--pattern` argument can be used to change the resulting filename for the br
 
 Feel free to create an issue/contribute a [browser](./web-browser-export/browsers/) file to locate the browser if this doesn't support some browser you use.
 
-Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) logs
+Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/purarue/sqlite_backup) logs
 
 ```
 $ web-browser-export --debug save -b firefox --to .
@@ -155,11 +155,11 @@ As an example:
 ```
 web-browser-export --debug merge ~/data/firefox/* ~/data/chrome/*
 [D 210417 21:12:18 merge:38] merging information from 24 sources...
-[D 210417 21:12:18 parse:19] Reading visits from /home/sean/data/firefox/places-20200828223058.sqlite...
+[D 210417 21:12:18 parse:19] Reading visits from /home/username/data/firefox/places-20200828223058.sqlite...
 [D 210417 21:12:18 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 [D 210417 21:12:18 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
 [D 210417 21:12:18 parse:22] Detected as Firefox
-[D 210417 21:12:19 parse:19] Reading visits from /home/sean/data/firefox/places-20201010031025.sqlite...
+[D 210417 21:12:19 parse:19] Reading visits from /home/username/data/firefox/places-20201010031025.sqlite...
 [D 210417 21:12:19 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 ....
 [D 210417 21:12:48 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
@@ -235,7 +235,7 @@ rm ~/data/browsing/*
 mv /tmp/browsing.jsonl.gz ~/data/browsing
 ```
 
-I do this every couple months with a script [here](https://github.com/seanbreckenridge/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
+I do this every couple months with a script [here](https://github.com/purarue/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
 
 ## Shell Completion
 
@@ -306,7 +306,7 @@ from web-browser-export.merge import read_and_merge
 read_and_merge(["/path/to/database", "/path/to/second/database", "..."])
 ```
 
-You can also use [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
+You can also use [`sqlite_backup`](https://github.com/purarue/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
 
 ```python
 from web-browser-export.browsers.all import Firefox
