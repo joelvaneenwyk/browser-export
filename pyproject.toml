@@ -1,7 +1,7 @@
 [project]
 name = "web_browser_export"
 version = "0.4.3"
-description = "save and merge browser history and metadata from different browsers"
+description = "Save and merge browser history and metadata from different browsers"
 authors = [{ name = "Sean Breckenridge", email = "seanbrecke@gmail.com" }]
 license = { text = "MIT" }
 requires-python = ">=3.10"
@@ -51,7 +51,16 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.uv]
-dev-dependencies = ["flake8", "mypy", "pytest", "pytest>=8"]
+managed = true
+dev-dependencies = [
+    "flake8",
+    "mypy",
+    "pylint>=3.3.3",
+    "pytest>=8",
+    "ruff>=0.8.6",
+    "setuptools>=75.6.0",
+]
+link-mode = "copy"
 
 [tool.uv.pip]
 universal = true
@@ -101,8 +110,13 @@ warn_unreachable = true
 [tool.pytest.ini_options]
 pythonpath = "src/"
 minversion = "7.0"
-addopts = "-ra -q"
+addopts = "-ra -q --ignore=.venv"
 testpaths = ["tests"]
-
-[dependency-groups]
-dev = ["flake8>=7.1.1", "mypy>=1.14.1", "pytest>=8.3.4"]
+norecursedirs = [
+    ".venv/*",
+    ".ruff_cache/*",
+    ".vscode/*",
+    ".git/*",
+    ".mypy_cache/*",
+    ".pytest_cache/*",
+]
