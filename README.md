@@ -12,7 +12,7 @@
   - [Shell Completion](#shell-completion)
   - [HPI](#hpi)
   - [Library Usage](#library-usage)
-      - [Comparisons with Promnesia](#comparisons-with-promnesia)
+    - [Comparisons with Promnesia](#comparisons-with-promnesia)
   - [Contributing](#contributing)
     - [Development](#development)
     - [Testing](#testing)
@@ -22,7 +22,7 @@ This:
 - locates and backs up browser history by copying the underlying database files to some directory you specify
 - can identify and parse the resulting database files into some common schema:
 
-```
+```yaml
 Visit:
   url: the url
   dt: datetime (when you went to this page)
@@ -66,7 +66,7 @@ Requires `python3.9+`
 
 ### `save`
 
-```
+```bash
 Usage: web-browser-export save [OPTIONS]
 
   Backs up a current browser database file
@@ -93,9 +93,9 @@ Must specify one of `--browser`, or `--path`
 After your browser history reaches a certain size, browsers typically remove old history over time, so I'd recommend backing up your history periodically, like:
 
 ```shell
-$ web-browser-export save -b firefox --to ~/data/browsing
-$ web-browser-export save -b chrome --to ~/data/browsing
-$ web-browser-export save -b safari --to ~/data/browsing
+web-browser-export save -b firefox --to ~/data/browsing
+web-browser-export save -b chrome --to ~/data/browsing
+web-browser-export save -b safari --to ~/data/browsing
 ```
 
 That copies the sqlite databases which contains your history `--to` some backup directory.
@@ -113,7 +113,7 @@ Feel free to create an issue/contribute a [browser](./web-browser-export/browser
 
 Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/purarue/sqlite_backup) logs
 
-```
+```bash
 $ web-browser-export --debug save -b firefox --to .
 [D 220202 10:10:22 common:87] Glob /home/sean/.mozilla/firefox with */places.sqlite (non recursive) matched [PosixPath('/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite')]
 [I 220202 10:10:22 save:18] backing up /home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite to /home/sean/Repos/web-browser-export/firefox-20220202181022.sqlite
@@ -132,7 +132,7 @@ For Firefox Android [Fenix](https://github.com/mozilla-mobile/fenix/), the datab
 
 These work very similarly, `inspect` is for a single database, `merge` is for multiple databases.
 
-```
+```bash
 Usage: web-browser-export merge [OPTIONS] SQLITE_DB...
 
   Extracts visits from multiple sqlite databases
@@ -152,7 +152,7 @@ Options:
 
 As an example:
 
-```
+```bash
 web-browser-export --debug merge ~/data/firefox/* ~/data/chrome/*
 [D 210417 21:12:18 merge:38] merging information from 24 sources...
 [D 210417 21:12:18 parse:19] Reading visits from /home/username/data/firefox/places-20200828223058.sqlite...
@@ -182,7 +182,7 @@ web-browser-export save -b firefox -t - | web-browser-export merge --json --stre
 Or, use [process substitution](https://tldp.org/LDP/abs/html/process-sub.html) to save multiple dbs in parallel and then merge them:
 
 ```bash
-$ web-browser-export merge <(web-browser-export save -b firefox -t -) <(web-browser-export save -b chrome -t -)
+web-browser-export merge <(web-browser-export save -b firefox -t -) <(web-browser-export save -b chrome -t -)
 ```
 
 Logs are hidden by default. To show the debug logs set `export BROWSEREXPORT_LOGS=10` (uses [logging levels](https://docs.python.org/3/library/logging.html#logging-levels)) or pass the `--debug` flag.
@@ -205,7 +205,7 @@ Merged files like `history.json` can also be used as inputs files themselves, th
 
 In addition to `.json` files, this can parse `.jsonl` ([JSON lines](http://jsonlines.org/)) files, which are files which contain newline delimited JSON objects. This allows you to parse JSON objects one at a time, instead of loading the entire file into memory. The `.jsonl` file can be generated with the `--stream` flag:
 
-```
+```bash
 web-browser-export merge --stream --json ~/data/browsing/*.sqlite > ./history.jsonl
 ```
 
@@ -326,7 +326,7 @@ merged = list(merge_visits([
 
 If this doesn't support a browser and you wish to quickly extend without maintaining a fork (or contributing back to this repo), you can pass a `Browser` implementation (see [browsers/all.py](./web-browser-export/browsers/all.py) and [browsers/common.py](./web-browser-export/browsers/common.py) for more info) to `web-browser-export.parse.read_visits` or programmatically override/add your own browsers as part of the [`web-browser-export.browsers` namespace package](https://github.com/joelvaneenwyk/browser-export/blob/0705629e1dc87fe47d6f731018d26dc3720cf2fe/web-browser-export/browsers/all.py#L15-L24)
 
-#### Comparisons with Promnesia
+### Comparisons with Promnesia
 
 A lot of the initial queries/ideas here were taken from [promnesia](https://github.com/karlicoss/promnesia) and the [`browser_history.py`](https://github.com/karlicoss/promnesia/blob/0e1e9a1ccd1f07b2a64336c18c7f41ca24fcbcd4/scripts/browser_history.py) script, but creating a package here allows its to be more extendible, e.g. allowing you to override/locate additional databases.
 
