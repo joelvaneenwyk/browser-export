@@ -17,8 +17,8 @@ def read_and_merge(paths: Sequence[PathIsh]) -> Iterator[Visit]:
     reads Visits from each of those databases,
     and merges them together (removing duplicates)
     """
-    pths = [expand_path(p) for p in paths]
-    hst: List[Iterator[Visit]] = list(map(read_visits, pths))
+    expanded_paths = [expand_path(p) for p in paths]
+    hst: List[Iterator[Visit]] = list(map(read_visits, expanded_paths))
     yield from merge_visits(hst)
 
 
