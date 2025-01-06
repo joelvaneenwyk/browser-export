@@ -117,3 +117,13 @@ testpaths = ["tests"]
 ignore = [
     ".venv"
 ]
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-class-docstring",
+    "missing-module-docstring",
+    "missing-function-docstring",
+    "import-outside-toplevel",
+    "logging-fstring-interpolation",
+    "redefined-outer-name"
+]
