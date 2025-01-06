@@ -9,18 +9,21 @@ compinit
 cqpqe
 dmypy
 edgedev
-errmsg
+ERRMSG
 exceptiongroup
 fenix
 Fenix
 floorp
 Floorp
+fmted
 fpath
+fstring
 harddrive
 htmlcov
 iniconfig
 ipython
 itrs
+ivis
 kompress
 librewolf
 Librewolf
@@ -30,6 +33,7 @@ maybeloc
 mccabe
 minversion
 mkdocs
+mypy
 norecursedirs
 nosetests
 opengraph
@@ -52,6 +56,7 @@ ropeproject
 scrapy
 Scrapy
 sdist
+secho
 setuptools
 somebrowser
 Spyder
@@ -62,6 +67,7 @@ termux
 testpaths
 tmpcn
 tomli
+toplevel
 virtualenv
 waterfox
 webassets

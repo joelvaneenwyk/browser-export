@@ -15,7 +15,5 @@
     "python.analysis.autoFormatStrings": true,
     "python.analysis.completeFunctionParens": false,
     "python.analysis.typeCheckingMode": "strict",
-    "python.languageServer": "Pylance",
-    "python.missingPackage.severity": "Warning",
-    "cSpell.words": ["mypy"]
+    "python.missingPackage.severity": "Warning"
 }
