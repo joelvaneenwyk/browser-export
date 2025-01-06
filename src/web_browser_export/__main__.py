@@ -119,7 +119,8 @@ LIST_BROWSERS = "LIST_BROWSERS" in os.environ
 @click.option(
     "--pattern",
     required=False,
-    help="Pattern for the resulting timestamped filename, should include an str.format replacement placeholder for the date [default: browser_name-{}.extension]",
+    help="""Pattern for the resulting timestamped filename, should include an str.format replacement
+placeholder for the date [default: browser_name-{}.extension]""",
 )
 @click.option(
     "-p",
@@ -163,7 +164,10 @@ def save(
     if path is not None:
         if pattern is not None:
             click.echo(
-                f"Warning: --pattern is not supported while using --path, if you want to backup to a specific path, you can use sqlite_backup directly:\n\npython3 -m sqlite_backup --debug {shlex.quote(path)} {shlex.quote(os.path.join(to, 'filename.sqlite'))}",
+                f"""Warning: --pattern is not supported while using --path, if you want to backup to
+a specific path, you can use sqlite_backup directly:
+
+python3 -m sqlite_backup --debug {shlex.quote(path)} {shlex.quote(os.path.join(to, 'filename.sqlite'))}""",
                 err=True,
             )
         _path_backup(path, to)
