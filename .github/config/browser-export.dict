@@ -11,6 +11,7 @@ dmypy
 edgedev
 ERRMSG
 exceptiongroup
+fastjsonschema
 fenix
 Fenix
 floorp
@@ -22,6 +23,7 @@ harddrive
 htmlcov
 iniconfig
 ipython
+isort
 itrs
 ivis
 kompress
@@ -41,6 +43,7 @@ palemoon
 pathmap
 Pavh
 Pipfile
+platformdirs
 pluggy
 PROCFILE
 promnesia
@@ -67,6 +70,7 @@ termux
 testpaths
 tmpcn
 tomli
+tomlkit
 toplevel
 virtualenv
 waterfox
