@@ -94,7 +94,7 @@ def from_datetime_microseconds(ts: int) -> datetime:
     return datetime.fromtimestamp(ts / 1_000_000, tz=timezone.utc)
 
 
-errmsg = """Expected to match a single database, but found:
+ERRMSG = """Expected to match a single database, but found:
 {}
 
 You can use the --profile argument to select one of the profiles/match a particular file"""
@@ -111,7 +111,7 @@ def handle_glob(bases: Sequence[Path], stem: str, recursive: bool = False) -> Pa
     logger.debug(f"Glob {bases} with {stem} ({recur_desc}) matched {dbs}")
     if len(dbs) > 1:
         human_readable_db_paths: str = "\n".join([str(db) for db in dbs])
-        raise BrowserexportError(errmsg.format(human_readable_db_paths))
+        raise BrowserexportError(ERRMSG.format(human_readable_db_paths))
     elif len(dbs) == 1:
         # found the match!
         return dbs[0]
