@@ -1,6 +1,6 @@
 # browserexport
 
-[![PyPi version](https://img.shields.io/pypi/v/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![Python 3.8|3.9|3.10|3.11|3.12](https://img.shields.io/pypi/pyversions/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![PyPi version](https://img.shields.io/pypi/v/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![Python 3.9|3.10|3.11|3.12|3.13](https://img.shields.io/pypi/pyversions/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 - [Supported Browsers](#supported-browsers)
 - [Install](#install)
@@ -59,7 +59,7 @@ This can probably extract visits from other Firefox/Chromium-based browsers, but
 
 `python3 -m pip install --user browserexport`
 
-Requires `python3.7+`
+Requires `python3.9+`
 
 ## Usage
 
@@ -110,19 +110,19 @@ The `--pattern` argument can be used to change the resulting filename for the br
 
 Feel free to create an issue/contribute a [browser](./browserexport/browsers/) file to locate the browser if this doesn't support some browser you use.
 
-Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) logs
+Can pass the `--debug` flag to show [`sqlite_backup`](https://github.com/purarue/sqlite_backup) logs
 
 ```
 $ browserexport --debug save -b firefox --to .
-[D 220202 10:10:22 common:87] Glob /home/sean/.mozilla/firefox with */places.sqlite (non recursive) matched [PosixPath('/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite')]
-[I 220202 10:10:22 save:18] backing up /home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite to /home/sean/Repos/browserexport/firefox-20220202181022.sqlite
+[D 220202 10:10:22 common:87] Glob /home/username/.mozilla/firefox with */places.sqlite (non recursive) matched [PosixPath('/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite')]
+[I 220202 10:10:22 save:18] backing up /home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite to /home/username/Repos/browserexport/firefox-20220202181022.sqlite
 [D 220202 10:10:22 core:110] Source database files: '['/tmp/tmpcn6gpj1v/places.sqlite', '/tmp/tmpcn6gpj1v/places.sqlite-wal']'
 [D 220202 10:10:22 core:111] Temporary Destination database files: '['/tmp/tmpcn6gpj1v/places.sqlite', '/tmp/tmpcn6gpj1v/places.sqlite-wal']'
-[D 220202 10:10:22 core:64] Copied from '/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite' to '/tmp/tmpcn6gpj1v/places.sqlite' successfully; copied without file changing: True
-[D 220202 10:10:22 core:64] Copied from '/home/sean/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite-wal' to '/tmp/tmpcn6gpj1v/places.sqlite-wal' successfully; copied without file changing: True
-[D 220202 10:10:22 core:230] Running backup, from '/tmp/tmpcn6gpj1v/places.sqlite' to '/home/sean/Repos/browserexport/firefox-20220202181022.sqlite'
+[D 220202 10:10:22 core:64] Copied from '/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite' to '/tmp/tmpcn6gpj1v/places.sqlite' successfully; copied without file changing: True
+[D 220202 10:10:22 core:64] Copied from '/home/username/.mozilla/firefox/ew9cqpqe.dev-edition-default/places.sqlite-wal' to '/tmp/tmpcn6gpj1v/places.sqlite-wal' successfully; copied without file changing: True
+[D 220202 10:10:22 core:230] Running backup, from '/tmp/tmpcn6gpj1v/places.sqlite' to '/home/username/Repos/browserexport/firefox-20220202181022.sqlite'
 [D 220202 10:10:22 save:14] Copied 1840 of 1840 database pages...
-[D 220202 10:10:22 core:246] Executing 'wal_checkpoint(TRUNCATE)' on destination '/home/sean/Repos/browserexport/firefox-20220202181022.sqlite'
+[D 220202 10:10:22 core:246] Executing 'wal_checkpoint(TRUNCATE)' on destination '/home/username/Repos/browserexport/firefox-20220202181022.sqlite'
 ```
 
 For Firefox Android [Fenix](https://github.com/mozilla-mobile/fenix/), the database has to be manually backed up (probably from a rooted phone using [`termux`](https://termux.dev/en/)) from `data/data/org.mozilla.fenix/files/places.sqlite`.
@@ -154,11 +154,11 @@ As an example:
 ```
 browserexport --debug merge ~/data/firefox/* ~/data/chrome/*
 [D 210417 21:12:18 merge:38] merging information from 24 sources...
-[D 210417 21:12:18 parse:19] Reading visits from /home/sean/data/firefox/places-20200828223058.sqlite...
+[D 210417 21:12:18 parse:19] Reading visits from /home/username/data/firefox/places-20200828223058.sqlite...
 [D 210417 21:12:18 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 [D 210417 21:12:18 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
 [D 210417 21:12:18 parse:22] Detected as Firefox
-[D 210417 21:12:19 parse:19] Reading visits from /home/sean/data/firefox/places-20201010031025.sqlite...
+[D 210417 21:12:19 parse:19] Reading visits from /home/username/data/firefox/places-20201010031025.sqlite...
 [D 210417 21:12:19 common:40] Chrome: Running detector query 'SELECT * FROM keyword_search_terms'
 ....
 [D 210417 21:12:48 common:40] Firefox: Running detector query 'SELECT * FROM moz_meta'
@@ -218,7 +218,7 @@ browserexport merge --stream --json ~/data/browsing/*.sqlite | gzip --best > ./h
 browserexport --debug inspect ./history.jsonl.gz
 ```
 
-If you don't care about keeping the raw databases for any other auxiliary info like form, bookmark data, or [from_visit](https://github.com/seanbreckenridge/browserexport/issues/30) info and just want the URL, visit date and metadata, you could use `merge` to periodically merge the bulky `.sqlite` files into a gzipped JSONL dump to reduce storage space, and improve parsing speed:
+If you don't care about keeping the raw databases for any other auxiliary info like form, bookmark data, or [from_visit](https://github.com/purarue/browserexport/issues/30) info and just want the URL, visit date and metadata, you could use `merge` to periodically merge the bulky `.sqlite` files into a gzipped JSONL dump to reduce storage space, and improve parsing speed:
 
 ```bash
 # backup databases
@@ -234,7 +234,7 @@ rm ~/data/browsing/*
 mv /tmp/browsing.jsonl.gz ~/data/browsing
 ```
 
-I do this every couple months with a script [here](https://github.com/seanbreckenridge/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
+I do this every couple months with a script [here](https://github.com/purarue/bleanser/blob/master/bin/merge-browser-history), and then sync my old databases to a harddrive for more long-term storage
 
 ## Shell Completion
 
@@ -305,7 +305,7 @@ from browserexport.merge import read_and_merge
 read_and_merge(["/path/to/database", "/path/to/second/database", "..."])
 ```
 
-You can also use [`sqlite_backup`](https://github.com/seanbreckenridge/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
+You can also use [`sqlite_backup`](https://github.com/purarue/sqlite_backup) to copy your current browser history into a sqlite connection in memory, as a `sqlite3.Connection`
 
 ```python
 from browserexport.browsers.all import Firefox
@@ -323,7 +323,7 @@ merged = list(merge_visits([
 ]))
 ```
 
-If this doesn't support a browser and you wish to quickly extend without maintaining a fork (or contributing back to this repo), you can pass a `Browser` implementation (see [browsers/all.py](./browserexport/browsers/all.py) and [browsers/common.py](./browserexport/browsers/common.py) for more info) to `browserexport.parse.read_visits` or programmatically override/add your own browsers as part of the [`browserexport.browsers` namespace package](https://github.com/seanbreckenridge/browserexport/blob/0705629e1dc87fe47d6f731018d26dc3720cf2fe/browserexport/browsers/all.py#L15-L24)
+If this doesn't support a browser and you wish to quickly extend without maintaining a fork (or contributing back to this repo), you can pass a `Browser` implementation (see [browsers/all.py](./browserexport/browsers/all.py) and [browsers/common.py](./browserexport/browsers/common.py) for more info) to `browserexport.parse.read_visits` or programmatically override/add your own browsers as part of the [`browserexport.browsers` namespace package](https://github.com/purarue/browserexport/blob/0705629e1dc87fe47d6f731018d26dc3720cf2fe/browserexport/browsers/all.py#L15-L24)
 
 #### Comparisons with Promnesia
 
@@ -331,14 +331,14 @@ A lot of the initial queries/ideas here were taken from [promnesia](https://gith
 
 TLDR on promnesia: lets you explore your browsing history in context: where you encountered it, in chat, on Twitter, on Reddit, or just in one of the text files on your computer. This is unlike most modern browsers, where you can only see when you visited the link.
 
-Since [promnesia #375](https://github.com/karlicoss/promnesia/pull/375), `browserexport` is used in [promnesia](https://github.com/karlicoss/promnesia) in the `browser.py` file (to read any of the supported databases here from disk), see [setup](https://github.com/karlicoss/promnesia#setup) and [the browser source quickstart](https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#browser) in the instructions for more
+`browserexport` is now used in [promnesia](https://github.com/karlicoss/promnesia) in the [`browser` source](https://github.com/karlicoss/promnesia/blob/master/src/promnesia/sources/browser.py), see [setup](https://github.com/karlicoss/promnesia#setup) and [the browser source quickstart](https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#browser) in the instructions for more
 
 ## Contributing
 
 Clone the repository and [optionally] create a [virtual environment](https://docs.python.org/3/library/venv.html) to do your work in.
 
 ```bash
-git clone https://github.com/seanbreckenridge/browserexport
+git clone https://github.com/purarue/browserexport
 cd ./browserexport
 # create a virtual environment to prevent possible package dependency conflicts
 python -m virtualenv .venv  # python3 -m pip install virtualenv if missing
